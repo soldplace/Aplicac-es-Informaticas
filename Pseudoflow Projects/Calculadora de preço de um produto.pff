@@ -1,0 +1,66 @@
+{"format":"pseudoflow","format_version":"1.0","version":"1.0.1","lang":"en","created":"2026-10-05T15:41:09.636Z","modified":"2026-10-05T16:55:06.536Z"}
+---
+dowhile (1 == 1)
+    declare opcao
+    print "Escolhe um produto entre os seguintes:"
+    print ""
+    print "1 – Livro → 15 €"
+    print "2 – Jogo → 40 €"
+    print "3 – Auscultadores → 60 €"
+    read opcao
+    
+    if (opcao == 1 or opcao == 2 or opcao == 3)
+    
+        declare quantidade
+        print "Insere a quantidade:"
+        read quantidade
+        
+        if (quantidade > 0)
+        
+            declare precolivro = 15
+            declare precojogo = 40
+            declare precoauscultadores = 60
+            declare desconto = 0.10
+            
+            declare produtoescolhido
+            declare precosemdesconto
+            declare valordesconto
+            declare precototal
+            
+            switch (opcao)
+                case 1:
+                    produtoescolhido = "Livro"
+                    precosemdesconto = precolivro * quantidade
+                endcase
+                case 2:
+                    produtoescolhido = "Jogo"
+                    precosemdesconto = precojogo * quantidade
+                endcase
+                case 3:
+                    produtoescolhido = "Auscultadores"
+                    precosemdesconto = precoauscultadores * quantidade
+                endcase
+            endswitch
+            
+            if (precosemdesconto >= 100)
+                valordesconto = precosemdesconto * desconto
+                precototal = precosemdesconto - valordesconto
+            else
+                precototal = precosemdesconto
+            endif
+            
+            print "Produto Escolhido: " + produtoescolhido
+            print "Quantidade: " + quantidade
+            print "Preço sem desconto: " + precosemdesconto + "€"
+            print "Valor do desconto (se aplicável): " + valordesconto + "€"
+            print ""
+            print "Preço Total: " + precototal + "€"
+        
+        else
+            print "A quantidade tem de ser superior a 0"
+        endif
+        
+    else
+        print "Opção Inválida, por favor seleciona um valor"
+    endif
+enddowhile

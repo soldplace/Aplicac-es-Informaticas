@@ -1,0 +1,26 @@
+{"format":"pseudoflow","format_version":"1.0","version":"1.0.1","lang":"en","created":"2026-09-30T11:22:24.694Z","modified":"2026-09-30T11:41:16.694Z"}
+---
+declare nota
+print "Inserir a nota do aluno: " read nota
+
+if (nota >= 0 and nota <= 20)
+if (nota < 10)
+print nota + ": Insuficiente"
+endif
+
+if (nota >= 10 and nota <= 13)
+print nota + ": Suficiente"
+endif
+
+if (nota >= 14 and nota <= 17)
+print nota + ": Bom"
+endif
+
+if (nota >= 18 and nota <= 20)
+print nota + ": Muito Bom"
+endif
+
+else
+print "A nota deve ser entre 0 e 20"
+endif
+

@@ -1,0 +1,26 @@
+declare dias
+print "Insere o número de dias: " read dias
+
+declare km
+print "Insere o número de quilómetros: " read km
+
+declare priceperday = 10
+declare priceperkm = 0.6
+declare iva = 0.23
+
+if (dias >= 1)
+declare finalpricedays = priceperday * dias
+declare finalpriceperkm = priceperkm * km
+declare finalpricebeforeiva = finalpricedays + finalpriceperkm
+declare priceiva = finalpricebeforeiva * iva
+declare finalprice = finalpricebeforeiva + priceiva
+
+print "Preço do aluguer: " + finalpricedays + "€"
+print "Preço dos quilómetros andados: " + finalpriceperkm + "€"
+print "Preço antes do IVA: " + finalpricebeforeiva + "€"
+print "Valor do IVA (23%): " + priceiva + "€"
+print ""
+print "Preço Final: " + finalprice + "€" // a arredondar com 2 casas decimais
+else
+print "O mínimo de dias para o alúguer é 1" 
+endif

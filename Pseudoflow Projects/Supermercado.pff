@@ -1,0 +1,73 @@
+{"format":"pseudoflow","format_version":"1.0","version":"1.0.1","lang":"en","created":"2026-10-07T11:36:10.136Z","modified":"2026-10-11T21:27:52.176Z"}
+---
+declare exit = 0
+declare total = 0
+dowhile (exit == 0)
+    declare opcao
+
+    declare preco, quantidade, desconto
+    print "1. Adicionar produto"
+    print "2. Consultar total"
+    print "3. Efetuar pagamento"
+    print "4. Sair"
+    read opcao
+    if (opcao == 1 or opcao == 2 or opcao == 3 or opcao == 4)
+        switch (opcao)
+            case 1:
+                print "Inserir o preço do produto: "
+                read preco
+                print "Inserir a quantidade de produtos desejados: "
+                read quantidade
+                print "Produto adicionado com sucesso!"
+
+                total = total + preco * quantidade
+                if (total > 50)
+                    desconto = 0.05
+                    if (total >= 100)
+                        desconto = 0.10
+                    endif
+                else
+                    desconto = 0
+                endif
+
+                declare valordesconto = total * desconto
+                declare valorfinal = total - valordesconto
+                declare percentagemdesconto = desconto * 100
+            endcase
+            case 2:
+                print "Valor da compra: " + total + "€"
+                print "Percentagem do desconto: " + percentagemdesconto + "%"
+                print "Valor do desconto: " + valordesconto + "€"
+                print "Valor final: " + valorfinal + "€"
+            endcase
+            case 3:
+                declare valorpago
+                declare valorentregue
+                print "Insirir o valor entregue pelo cliente: "
+                read valorentregue
+                valorpago = valorpago + valorentregue
+                while (valorpago < valorfinal)
+                    print "Valor Insuficiente!"
+                    print "Inserir o valor acrescentado pelo cliente: "
+                    valorentregue = 0
+                    read valorentregue
+                    valorpago = valorpago + valorentregue
+                endwhile
+                if (valorpago >= valorfinal)
+                    print "Pago com sucesso!"
+                    if (valorpago != valorfinal)
+                        declare troco
+                        troco = valorpago - valorfinal
+                        print "Troco: " + troco + "€"
+                    endif
+                endif
+            endcase
+            case 4:
+                print "Obrigado pela sua compra!"
+                exit = 1
+            endcase
+        endswitch
+    else 
+        print "Opção Inválida."
+    endif
+enddowhile

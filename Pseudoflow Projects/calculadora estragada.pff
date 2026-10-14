@@ -1,0 +1,32 @@
+{"format":"pseudoflow","format_version":"1.0","version":"1.0.1","lang":"en","created":"2026-09-23T11:52:14.645Z","modified":"2026-09-23T12:14:48.387Z"}
+---
+declare typeinput
+print "diz o tipo de operação\nOperações possíveis: soma, sub, div, multi"
+read typeinput
+
+declare numero1
+print "Primeiro Número:"
+read numero1
+
+declare numero2
+print "Segundo Número:"
+read numero2
+
+declare soma = "soma"
+declare sub = "sub"
+declare div = "div"
+declare multi = "multi"
+declare output
+if (typeinput == soma)
+     output = numero1 + numero2
+endif
+if (typeinput == sub)
+    output = numero1 - numero2
+endif
+if (typeinput == div)
+    output = numero1 / numero2
+endif
+if (typeinput == multi)
+    output = numero1 * numero2
+endif
+print output

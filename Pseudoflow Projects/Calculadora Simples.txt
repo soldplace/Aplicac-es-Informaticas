@@ -1,0 +1,45 @@
+dowhile (1 == 1)
+    declare operacao
+    print "Seleciona uma das seguintes operações com o devido número:"
+    print "1 - Somar"
+    print "2 - Subtrair"
+    print "3 - Multiplicar"
+    print "4 - Dividir"
+    read operacao
+    if (operacao == 1 or operacao == 2 or operacao == 3 or operacao == 4)
+        declare input1
+        print "Insere o primeiro valor: "
+        read input1
+        
+        declare input2
+        print "Insere o segundo valor: "
+        read input2
+        
+        declare resultado
+        declare erro
+        switch (operacao)
+            case 1:
+                resultado = input1 + input2
+            endcase
+            case 2:
+                resultado = input1 - input2
+            endcase
+            case 3:
+                resultado = input1 * input2
+            endcase
+            case 4:
+                if (input2 != 0)
+                    resultado = input1 / input2
+                else
+                    erro = 1
+                    print "Não é possível dividir por 0"
+                endif
+            endcase
+        endswitch
+        if (erro != 1)
+            print "Resultado: " + resultado
+        endif   
+    else
+        print "Operação Inválida!"
+    endif
+enddowhile

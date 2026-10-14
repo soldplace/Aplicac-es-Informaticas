@@ -1,0 +1,101 @@
+{"format":"pseudoflow","format_version":"1.0","version":"1.0.1","lang":"en","created":"2026-10-05T15:41:09.636Z","modified":"2026-10-05T18:38:34.016Z"}
+---
+dowhile (1 == 1)
+
+    declare sessao
+    print "Inserir a sessão para assistir:"
+    print ""
+    print "1 – Normal → 7 € por bilhete"
+    print "2 – 3D → 9 € por bilhete"
+    print "3 – VIP → 12 € por bilhete"
+    read sessao
+    if (sessao == 1 or sessao == 2 or sessao == 3)
+        declare idade
+        print "Inserir a idade para o registo dos bilhetes: "
+        read idade
+        if (idade > 0)
+            declare quantidade
+            print "Inserir a quantidade de bilhetes: "
+            read quantidade
+            if (quantidade > 0)
+                declare lugarmarcado
+                print "Deseja um lugar marcado?"
+                print ""
+                print "1 - Sim"
+                print "2 - Nao"
+                read lugarmarcado
+                if (lugarmarcado == 1 or lugarmarcado == 2)
+                    declare preconormal = 7
+                    declare preco3d = 9
+                    declare precovip = 12
+                    
+                    declare desconto12 = 0.5
+                    declare desconto65 = 0.3
+                    declare descontofinal
+
+                    declare tipodesessao
+                    declare precosemdesconto
+                    declare valordesconto
+                    declare precofinal
+
+                    declare adicaopelolugarmarcado
+
+                    if (idade <= 12)
+                        descontofinal = desconto12
+                    else 
+                        if (idade >= 65)
+                            descontofinal = desconto65
+                        else
+                            descontofinal = 0
+                        endif
+                    endif
+
+                    switch (sessao)
+                        case 1:
+                            tipodesessao = "Normal"
+                            precosemdesconto = preconormal * quantidade
+                        endcase
+                        case 2:
+                            tipodesessao = "3d"
+                            precosemdesconto = preco3d * quantidade
+                        endcase
+                        case 3:
+                            tipodesessao = "VIP"
+                            precosemdesconto = precovip * quantidade
+                        endcase
+                    endswitch
+
+                    switch (lugarmarcado)
+                        case 1:
+    	                    adicaopelolugarmarcado = quantidade
+                        endcase
+                        case 2:
+                            adicaopelolugarmarcado = 0
+                        endcase
+                    endswitch
+
+                    valordesconto = precosemdesconto * descontofinal
+                    precofinal = precosemdesconto - valordesconto + adicaopelolugarmarcado
+
+                    print "Tipo de Sessão: " + tipodesessao
+                    print "Número de bilhetes: " + quantidade
+                    print "Preço sem desconto: " + precosemdesconto + "€"
+                    print "Valor do desconto: " + valordesconto + "€"
+                    print ""
+                    print "Preço final: " + precofinal + "€"
+                    if (precofinal >= 50)
+                        print "Tem direito a uma oferta de pipocas!"
+                    endif
+                else
+                    print "Opção Inválida."
+                endif
+            else
+                print "A quantidade de bilhetes tem de ser superior a 0."
+            endif
+        else
+            print "A idade tem de ser superior a 0."
+        endif
+    else
+        print "Opção Inválida."
+    endif
+enddowhile
